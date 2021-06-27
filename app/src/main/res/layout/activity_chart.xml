@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    android:background="@android:color/black"
+    android:orientation="vertical"
+    android:weightSum="12">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Worldwide"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:weightSum="4"
+        android:background="@drawable/btn_round">
+        <Button
+            android:id="@+id/btnTrack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:layout_marginRight="2dp"
+            android:background="#12f0f0f0"
+            android:gravity="center"
+            android:onClick="goTrackCountries"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="Covid-news"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/color_white"
+            tools:ignore="OnClick"
+            android:backgroundTint="@drawable/hover"
+            />
+
+        <Button
+            android:id="@+id/btnMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:background="#12f0f0f0"
+            android:gravity="center"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="Track Data"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/color_white"
+            android:backgroundTint="@drawable/hover"/>
+
+        <Button
+            android:id="@+id/btnMaps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:background="#12f0f0f0"
+            android:gravity="center"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="Maps"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/color_white"
+            android:backgroundTint="@drawable/hover"/>
+        <Button
+            android:id="@+id/btnHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:background="#12f0f0f0"
+            android:gravity="center"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="About app"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/color_white"
+            android:backgroundTint="@drawable/hover"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <TextView
+            android:id="@+id/txt_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Confirm"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_recover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Recovered"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/green"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_death"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Deaths"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/red"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_existing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Existing"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/orange"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:layout_weight="4"
+        app:cardBackgroundColor="#faf4e3"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart1"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+        </com.github.mikephil.charting.charts.PieChart>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtLastUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="last update : "
+            android:textColor="@android:color/white" />
+
+            <FrameLayout
+                android:id="@+id/fragmentHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp">
+            </FrameLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

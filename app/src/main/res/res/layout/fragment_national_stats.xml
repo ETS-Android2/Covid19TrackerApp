@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout"
+                android:elevation="8dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/btn_round"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:textColor="#f0ece2"
+                    android:background="@drawable/btn_round"
+                    android:textSize="20sp"
+                    android:text="Total Tests"
+                    android:fontFamily="@font/latoregular"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_round"
+                    android:text="...."
+                    android:textColor="#6a0dad"
+                    android:textSize="20sp"
+                    android:id="@+id/total_tests"
+                    android:fontFamily="@font/latoregular"
+                    />
+            </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_round"
+                    android:padding="8dp"
+                    android:id="@+id/time_stamp"
+                    android:textSize="14sp"
+                    android:textColor="#f0ece2"
+                    android:gravity="center"
+                    android:text="as of "
+                    android:fontFamily="@font/latoregular"
+                    />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Cumulative Stats"
+                android:textColor="@color/color_white"
+                android:fontFamily="@font/latoregular"
+                />
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/line_chart"
+                android:layout_marginVertical="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Daily Detected"
+                android:textColor="@color/color_white"
+                android:fontFamily="@font/latoregular"
+                />
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bar_chart"
+                android:layout_marginVertical="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Daily Cured"
+                android:textColor="@color/color_white"
+                android:fontFamily="@font/latoregular"
+                />
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bar_chart2"
+                android:layout_marginVertical="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Daily Deceased"
+                android:textColor="@color/color_white"
+                android:fontFamily="@font/latoregular"
+                />
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bar_chart3"
+                android:layout_marginVertical="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
