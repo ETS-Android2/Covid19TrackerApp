@@ -2,6 +2,10 @@
 
 This app was built from : https://github.com/pramod-Paratabadi/Smart-Tracker-COVID-19
 
+Worldwide chart  |  country / province data |  Map |  How To Stay Safe
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/first.png)  |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/second.png) |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/third.png) |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/fourth.png)
+
 ## Debugging
 
 If you run the app on a new computer, first.
