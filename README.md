@@ -24,6 +24,10 @@ Change the URL in APIClient if you see the data that are not loading.
 
 The application is available to the public strictly for educational and research purposes only.
 
+✨
+
+<a href="https://github.com/chinhdoan"><img src="https://avatars.githubusercontent.com/u/31790367?v=4" width="100px;" alt=""/>
+
 
 
 
