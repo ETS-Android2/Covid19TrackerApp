@@ -2,11 +2,11 @@
 
 ### Code 
 
-* [SmartTracker-Covid-19 by @pramod-Paratabadi] (https://github.com/pramod-Paratabadi/Smart-Tracker-COVID-19).
+* [SmartTracker-Covid-19 by @pramod-Paratabadi](https://github.com/pramod-Paratabadi/Smart-Tracker-COVID-19).
 
 ### Server 
 
-* [coronavirus-tracker-api by @ExpDev07] (https://github.com/ExpDev07/coronavirus-tracker-api).
+* [coronavirus-tracker-api by @ExpDev07](https://github.com/ExpDev07/coronavirus-tracker-api).
 
 Worldwide chart  |  country / province data |  Map |  How To Stay Safe
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
