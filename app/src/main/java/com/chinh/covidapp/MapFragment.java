@@ -20,8 +20,9 @@ import android.webkit.WebViewClient;
 public class MapFragment extends Fragment {
 
     private WebView webView;
-    private  String Load_url="https://www.healthmap.org/covid-19/";
-    private String default_url = "https://data.opendevelopmentmekong.net/odm-short-url/a7eadcb6-61ae-4804-9205-b02696b2c5f3";
+//    https://www.trackcorona.live/map
+    private  String Load_url="https://www.trackcorona.live/map";
+    private String default_url = "https://www.healthmap.org/covid-19/";
     //"""//https://bnonews.com/index.php/2020/02/the-latest-coronavirus-cases/";
     private final static long threshold = 150000;
 
@@ -54,7 +55,7 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_map, container, false);
 
-        webView = v.findViewById(R.id.mbEmbeddedIndiaStateWiseWebView);
+        webView = v.findViewById(R.id.mbEmbeddedWiseWebView);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);

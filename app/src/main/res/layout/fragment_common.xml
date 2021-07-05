@@ -47,9 +47,7 @@
             android:textColor="@color/color_white"
             android:minHeight="?actionBarSize"
             android:padding="@dimen/appbar_padding"
-            android:text="" />
-
-            />
+            android:text="Help" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

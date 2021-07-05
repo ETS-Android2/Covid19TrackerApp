@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.main.SelfDiagnosisFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="380dp"
         android:layout_marginBottom="35dp"
         android:fillViewport="true">
         <LinearLayout
@@ -22,6 +21,7 @@
 
             <ImageView
                 android:id="@+id/imageView"
+                android:contentDescription="TipsIcon"
                 android:layout_width="match_parent"
                 android:layout_height="86dp"
                 android:src="@drawable/tips" />
@@ -62,7 +62,7 @@
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="wrap_content"
                 android:text="This App provides the Information and Awareness related to Corona Virus [ COVID-19 ]"
                 android:textColor="@android:color/holo_red_dark"
                 android:textColorHighlight="@color/color_white"
@@ -78,10 +78,11 @@
             <RelativeLayout
                 android:id="@+id/rlButton"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/imageView100"
+                    android:contentDescription="vnukImage"
                     android:layout_width="137dp"
                     android:layout_height="125dp"
                     android:layout_marginLeft="2dp"
@@ -100,7 +101,6 @@
                     android:text="DoanXuanChinh\n Mb No:  0903555347\n Mail: chinh.doan160202@vnuk.edu.vn"
                     android:textStyle="bold|italic"
                     app:fontFamily="@font/latoregular" />
-
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

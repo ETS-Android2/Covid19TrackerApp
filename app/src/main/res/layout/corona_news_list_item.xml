@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Layout for a single list item that displays an corona news -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:baselineAligned="false"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/corona_news_list_item"
     android:layout_width="match_parent"

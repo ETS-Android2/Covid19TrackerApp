@@ -126,14 +126,14 @@ public class ConfirmFragment extends Fragment {
 
                 progressBar.dismiss();
 
-                Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG);
+                Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     private void setAdapter(final ConfirmModel confirmModel) {
         if (confirmModel.getLocations().size() == 0) {
-            Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_LONG);
+            Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_LONG).show();
         } else {
             txtTotal.setText("Total : " + confirmModel.getLatest());
             Collections.sort(confirmModel.getLocations(), new Comparator<ConfirmModel.Location>() {

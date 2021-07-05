@@ -40,11 +40,22 @@ public class ChartActivity extends AppCompatActivity {
     private PieChart chart;
     private TextView txtConfirm, txtRecovered, txtDeaths, txtexisting;
     private Fragment currentFragment;
-
+    private ChartActivity home = this; //create home parameter
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
+
+
+        //Homebutton
+        findViewById(R.id.homeBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(home, ChartActivity.class));
+            }
+        });
+
 
         findViewById(R.id.btnTrack).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,7 +246,7 @@ public class ChartActivity extends AppCompatActivity {
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "Record Not Found", Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(), "Record Not Found", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -245,7 +256,7 @@ public class ChartActivity extends AppCompatActivity {
 
                 progressBar.dismiss();
 
-                Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_LONG).show();
             }
         });
 

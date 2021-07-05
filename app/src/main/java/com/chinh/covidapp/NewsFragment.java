@@ -44,7 +44,7 @@ public class NewsFragment extends Fragment
     private static final String LOG_TAG = NewsFragment.class.getName();
     LoaderManager loaderManager = null;
     /** URL for corona data from the News API */
-    private static final String CORONA_NEWS_REQUEST_URL ="https://news.google.com/rss/search?q=Corona%20Case%20update%20in%20vietnam&hl=en-IN&gl=VN&ceid=VN:vn";
+    private static final String CORONA_NEWS_REQUEST_URL ="https://news.google.com/rss/search?q=Corona+Case+update&hl=en-US&gl=US&ceid=US:en";
 
 
 
