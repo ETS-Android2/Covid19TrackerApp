@@ -91,35 +91,38 @@ public class DeathsFragment extends Fragment {
     }
 
     public void loadDeathsData() {
+        try{
+            progressBar = new ProgressDialog(getActivity());
+            progressBar.setMessage("Please wait !");
+            progressBar.show();
 
-        progressBar = new ProgressDialog(getActivity());
-        progressBar.setMessage("Please wait !");
-        progressBar.show();
+            ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
 
-        ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
+            /**
+             GET List Resources
+             **/
+            Call<ConfirmModel> call = apiService.getDeaths();
+            call.enqueue(new Callback<ConfirmModel>() {
+                @Override
+                public void onResponse(Call<ConfirmModel> call, Response<ConfirmModel> response) {
+                    progressBar.dismiss();
+                    setAdapter(response.body());
+                }
 
-        /**
-         GET List Resources
-         **/
-        Call<ConfirmModel> call = apiService.getDeaths();
-        call.enqueue(new Callback<ConfirmModel>() {
-            @Override
-            public void onResponse(Call<ConfirmModel> call, Response<ConfirmModel> response) {
-                progressBar.dismiss();
-                setAdapter(response.body());
-            }
+                @Override
+                public void onFailure(Call<ConfirmModel> call, Throwable t) {
+                    call.cancel();
 
-            @Override
-            public void onFailure(Call<ConfirmModel> call, Throwable t) {
-                call.cancel();
+                    // recyclerView.setVisibility(View.GONE);
+                    // emptyView.setVisibility(View.GONE);
+                    progressBar.dismiss();
 
-                // recyclerView.setVisibility(View.GONE);
-                // emptyView.setVisibility(View.GONE);
-                progressBar.dismiss();
-
-                Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
-            }
-        });
+                    Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void setAdapter(final ConfirmModel confirmModel) {

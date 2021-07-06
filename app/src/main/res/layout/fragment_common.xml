@@ -36,7 +36,6 @@
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold" />
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_help"
             android:layout_width="wrap_content"

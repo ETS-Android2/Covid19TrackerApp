@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 //import androidx.fragment.app.Fragment;
 
+import com.leo.simplearcloader.SimpleArcLoader;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
@@ -29,6 +30,8 @@ import com.chinh.covidapp.ui.main.SelfDiagnosisFragment;
 import com.chinh.covidapp.util.DateUtil;
 import com.chinh.covidapp.R;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -41,6 +44,7 @@ public class ChartActivity extends AppCompatActivity {
     private TextView txtConfirm, txtRecovered, txtDeaths, txtexisting;
     private Fragment currentFragment;
     private ChartActivity home = this; //create home parameter
+    SimpleArcLoader simpleArcLoader;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +104,8 @@ public class ChartActivity extends AppCompatActivity {
         txtDeaths = findViewById(R.id.txt_death);
         txtRecovered = findViewById(R.id.txt_recover);
         txtexisting = findViewById(R.id.txt_existing);
+        simpleArcLoader = findViewById(R.id.loader);
+
 
         chart.setUsePercentValues(true);
         chart.getDescription().setEnabled(false);
@@ -163,9 +169,7 @@ public class ChartActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
-
         loadLatestData();
-
     }
 
 
@@ -200,18 +204,22 @@ public class ChartActivity extends AppCompatActivity {
         data.setValueTextColor(Color.WHITE);
         //data.setValueTypeface(tfLight);
         chart.setData(data);
-
         // undo all highlights
         //chart.highlightValues(null);
         chart.invalidate();
     }
 
     public void loadLatestData() {
-        final ProgressDialog progressBar = new ProgressDialog(this);
-        progressBar.setMessage("Please wait !");
-        progressBar.show();
 
+
+        try{
+
+            simpleArcLoader.start();
+//        final ProgressDialog progressBar = new ProgressDialog(this);
+//        progressBar.setMessage("Please wait !");
+//        progressBar.show();
         ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
+
 
         /**
          GET List Resources
@@ -220,7 +228,9 @@ public class ChartActivity extends AppCompatActivity {
         call.enqueue(new Callback<AllModel>() {
             @Override
             public void onResponse(Call<AllModel> call, Response<AllModel> response) {
-                progressBar.dismiss();
+//                progressBar.dismiss();
+                simpleArcLoader.stop();
+                simpleArcLoader.setVisibility(View.GONE);
                 AllModel allModel = response.body();
                 if (allModel != null) {
                     setData(response.body().getLatest().getConfirmed(), response.body().getLatest().getDeaths(), response.body().getLatest().getRecovered());
@@ -254,15 +264,17 @@ public class ChartActivity extends AppCompatActivity {
             public void onFailure(Call<AllModel> call, Throwable t) {
                 call.cancel();
 
-                progressBar.dismiss();
-
+//                progressBar.dismiss();
+                simpleArcLoader.stop();
+                simpleArcLoader.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_LONG).show();
             }
         });
-
-
-
+        }catch (Exception e){
+            simpleArcLoader.stop();
+            simpleArcLoader.setVisibility(View.GONE);
+//            scrollView.setVisibility(View.VISIBLE);
+            Toast.makeText(ChartActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
-
-
 }

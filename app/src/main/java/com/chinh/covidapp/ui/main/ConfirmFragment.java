@@ -1,5 +1,6 @@
 package com.chinh.covidapp.ui.main;
 
+import com.leo.simplearcloader.SimpleArcLoader;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -103,32 +104,37 @@ public class ConfirmFragment extends Fragment {
 
 
     public void loadConfirmData() {
-        progressBar = new ProgressDialog(getActivity());
-        progressBar.setMessage("Please wait !");
-        progressBar.show();
 
-        ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
+        try {
+            progressBar = new ProgressDialog(getActivity());
+            progressBar.setMessage("Please wait !");
+            progressBar.show();
+            ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
 
-        /**
-         GET List Resources
-         **/
-        Call<ConfirmModel> call = apiService.getConfirmed();
-        call.enqueue(new Callback<ConfirmModel>() {
-            @Override
-            public void onResponse(Call<ConfirmModel> call, Response<ConfirmModel> response) {
-                progressBar.dismiss();
-                setAdapter(response.body());
-            }
+            /**
+             GET List Resources
+             **/
+            Call<ConfirmModel> call = apiService.getConfirmed();
+            call.enqueue(new Callback<ConfirmModel>() {
+                @Override
+                public void onResponse(Call<ConfirmModel> call, Response<ConfirmModel> response) {
+                    progressBar.dismiss();
+                    setAdapter(response.body());
+                }
 
-            @Override
-            public void onFailure(Call<ConfirmModel> call, Throwable t) {
-                call.cancel();
+                @Override
+                public void onFailure(Call<ConfirmModel> call, Throwable t) {
+                    call.cancel();
 
-                progressBar.dismiss();
+                    progressBar.dismiss();
 
-                Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
-            }
-        });
+                    Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
+                }
+            });
+        }catch(Exception e){
+            progressBar.dismiss();
+            Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void setAdapter(final ConfirmModel confirmModel) {

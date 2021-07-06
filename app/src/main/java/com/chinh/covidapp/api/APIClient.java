@@ -19,7 +19,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class APIClient {
 
 //    Open localhost on local device instead of using 127.0.0.1:8000, i changed to 10.0.2.2:8000
-    public static final String BASE_URL = "https://coronavirus-tracker-api.herokuapp.com";
+    public static final String BASE_URL = "http://10.0.2.2:8000";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient() {

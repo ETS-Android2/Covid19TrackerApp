@@ -90,32 +90,38 @@ public class RecoveredFragment extends Fragment {
     }
 
     public void loadRecoverData() {
-        progressBar = new ProgressDialog(getActivity());
-        progressBar.setMessage("Please wait !");
-        progressBar.show();
+        try {
 
-        ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
 
-        /**
-         GET List Resources
-         **/
-        Call<ConfirmModel> call = apiService.getRecovered();
-        call.enqueue(new Callback<ConfirmModel>() {
-            @Override
-            public void onResponse(Call<ConfirmModel> call, Response<ConfirmModel> response) {
-                progressBar.dismiss();
-                setAdapter(response.body());
-            }
+            progressBar = new ProgressDialog(getActivity());
+            progressBar.setMessage("Please wait !");
+            progressBar.show();
 
-            @Override
-            public void onFailure(Call<ConfirmModel> call, Throwable t) {
-                call.cancel();
+            ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
 
-                progressBar.dismiss();
+            /**
+             GET List Resources
+             **/
+            Call<ConfirmModel> call = apiService.getRecovered();
+            call.enqueue(new Callback<ConfirmModel>() {
+                @Override
+                public void onResponse(Call<ConfirmModel> call, Response<ConfirmModel> response) {
+                    progressBar.dismiss();
+                    setAdapter(response.body());
+                }
 
-                Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<ConfirmModel> call, Throwable t) {
+                    call.cancel();
+
+                    progressBar.dismiss();
+
+                    Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void setAdapter(final ConfirmModel confirmModel) {

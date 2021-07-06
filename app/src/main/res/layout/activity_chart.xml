@@ -165,13 +165,20 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="460dp"
+        android:layout_height="400dp"
         android:layout_weight="4"
         app:cardBackgroundColor="#faf4e3"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
-
+        <com.leo.simplearcloader.SimpleArcLoader
+            android:visibility="visible"
+            android:id="@+id/loader"
+            android:layout_gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:arc_style="simple_arc">
+        </com.leo.simplearcloader.SimpleArcLoader>
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChart1"
             android:layout_width="match_parent"
@@ -204,11 +211,6 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:contentDescription="vnuk"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/vnuk" />
+
 
 </LinearLayout>
