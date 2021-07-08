@@ -11,6 +11,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.leo.simplearcloader.SimpleArcLoader;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +27,7 @@ public class MapFragment extends Fragment {
     private String default_url = "https://www.healthmap.org/covid-19/";
     //"""//https://bnonews.com/index.php/2020/02/the-latest-coronavirus-cases/";
     private final static long threshold = 150000;
-
+    SimpleArcLoader simpleArcLoader;
 
     public MapFragment() {
         // Required empty public constructor
@@ -54,8 +56,8 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_map, container, false);
-
         webView = v.findViewById(R.id.mbEmbeddedWiseWebView);
+        simpleArcLoader = v.findViewById(R.id.loader);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
@@ -76,14 +78,19 @@ public class MapFragment extends Fragment {
                 super.onReceivedError(view, request, error);
             }
         });
+        simpleArcLoader.start();
         openURL();
-
         // Inflate the layout for this fragment
+        simpleArcLoader.stop();
+        simpleArcLoader.setVisibility(View.GONE);
         return v;
     }
     private void openURL() {
+        simpleArcLoader.start();
         webView.loadUrl(Load_url);
         webView.requestFocus();
+        simpleArcLoader.stop();
+        simpleArcLoader.setVisibility(View.GONE);
     }
     private void openDefaultURL()
     {

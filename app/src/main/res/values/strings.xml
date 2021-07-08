@@ -5,5 +5,7 @@
     <string name="tab_text_3">Recovered</string>
     <string name="no_corona_news">No Corona News found.</string>
     <string name="no_internet_connection">No internet connection.</string>
-
+    <string name="Open">open</string>
+    <string name="Close">close</string>
+    <string name="main_page_selected">test</string>
 </resources>

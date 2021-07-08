@@ -5,64 +5,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container"
-    android:background="@android:color/black"
+    android:background="@android:color/background_dark"
     android:orientation="vertical"
     android:weightSum="12">
-    <LinearLayout
-        android:id="@+id/homeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-    <ImageView
-        android:id="@+id/homeImg"
-        android:contentDescription="Home"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="2dp"
-        android:src="@drawable/th" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Covid19 Tracker"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
 
-    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:id="@+id/homeBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+<!--    <ImageView-->
+<!--        android:id="@+id/homeImg"-->
+<!--        android:contentDescription="Home"-->
+<!--        android:layout_width="27dp"-->
+<!--        android:layout_height="27dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginLeft="2dp"-->
+<!--        android:src="@drawable/th" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="10dp"-->
+<!--        android:text="Covid19 Tracker"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        />-->
+
+<!--    </LinearLayout>-->
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4"
-        android:background="@drawable/btn_round">
+        android:layout_height="wrap_content">
+<!--        <Button-->
+<!--            android:id="@+id/btnTrack"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginRight="2dp"-->
+<!--            android:background="#12f0f0f0"-->
+<!--            android:gravity="center"-->
+<!--            android:onClick="goTrackCountries"-->
+<!--            android:paddingTop="2dp"-->
+<!--            android:paddingBottom="2dp"-->
+<!--            android:text="Covid-news"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--            android:textColor="@color/color_white"-->
+<!--            tools:ignore="OnClick"-->
+<!--            android:backgroundTint="@drawable/hover"-->
+<!--            />-->
+
+
+<!--        <Button-->
+<!--            android:id="@+id/btnMaps"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginRight="2dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="#12f0f0f0"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingTop="2dp"-->
+<!--            android:paddingBottom="2dp"-->
+<!--            android:text="Maps"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--            android:textColor="@color/color_white"-->
+<!--            android:backgroundTint="@drawable/hover"/>-->
+<!--        <Button-->
+<!--            android:id="@+id/btnHelp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="#12f0f0f0"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingTop="2dp"-->
+<!--            android:paddingBottom="2dp"-->
+<!--            android:text="About app"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--            android:textColor="@color/color_white"-->
+<!--            android:backgroundTint="@drawable/hover"/>-->
+
         <Button
             android:id="@+id/btnTrack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:layout_marginRight="2dp"
-            android:background="#12f0f0f0"
-            android:gravity="center"
-            android:onClick="goTrackCountries"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:text="Covid-news"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/color_white"
-            tools:ignore="OnClick"
-            android:backgroundTint="@drawable/hover"
-            />
-
-        <Button
-            android:id="@+id/btnMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_weight="1"
-            android:background="#12f0f0f0"
+            android:background="#3A000000"
             android:gravity="center"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
@@ -70,113 +101,93 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/color_white"
             android:backgroundTint="@drawable/hover"/>
-
-        <Button
-            android:id="@+id/btnMaps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_weight="1"
-            android:background="#12f0f0f0"
-            android:gravity="center"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:text="Maps"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/color_white"
-            android:backgroundTint="@drawable/hover"/>
-        <Button
-            android:id="@+id/btnHelp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#12f0f0f0"
-            android:gravity="center"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:text="About app"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/color_white"
-            android:backgroundTint="@drawable/hover"/>
-
     </LinearLayout>
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
+    <ScrollView
+        android:id="@+id/tracking"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="35dp"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/txt_confirm"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:text="Confirm"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
+            android:orientation="vertical">
+<!--            android:background="@color/color_white">-->
 
-        <TextView
-            android:id="@+id/txt_recover"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:text="Recovered"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/green"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txt_death"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:text="Deaths"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/red"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-        <TextView
-            android:id="@+id/txt_existing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:text="Existing"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/orange"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="#20FAF8F8"
+                    android:text="Confirm"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/darker_gray" />
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/txt_recover"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="#20FAF8F8"
+                    android:text="Recovered"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/green" />
 
+                <TextView
+                    android:id="@+id/txt_death"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="#20FAF8F8"
+                    android:text="Deaths"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/txt_existing"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:background="#20FAF8F8"
+                    android:paddingBottom="5dp"
+                    android:text="Existing"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/orange" />
+            </LinearLayout>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:layout_weight="4"
-        app:cardBackgroundColor="#faf4e3"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true">
+        app:cardBackgroundColor="#20FAF8F8">
         <com.leo.simplearcloader.SimpleArcLoader
             android:visibility="visible"
             android:id="@+id/loader"
             android:layout_gravity="center"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:arc_style="simple_arc">
         </com.leo.simplearcloader.SimpleArcLoader>
         <com.github.mikephil.charting.charts.PieChart
@@ -184,7 +195,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </com.github.mikephil.charting.charts.PieChart>
-
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
@@ -200,17 +210,13 @@
             android:gravity="center"
             android:text="last update : "
             android:textColor="@android:color/white" />
-
+    </LinearLayout>
             <FrameLayout
                 android:id="@+id/fragmentHolder"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:paddingTop="10dp">
             </FrameLayout>
-
-
-    </LinearLayout>
-
-
-
+        </LinearLayout>
+    </ScrollView>>
 </LinearLayout>

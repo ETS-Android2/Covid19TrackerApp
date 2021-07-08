@@ -9,4 +9,15 @@
     <color name="color_white">#ededf2</color>
     <color name="light">#f0ece2</color>
     <color name="background">#1b1b26</color>
+    <color name="background_toolbar">#0c2b3b</color>
+    <color name="selectedIconColor">#ffffff</color>
+    <color name="defaultIconColor">#F6F6F6</color>
+    <color name="countTextColor">#fff</color>
+    <color name="circleColor">#801B6387</color>
+    <color name="countBackgroundColor">#F45E0B</color>
+    <color name="backgroundBottomColor">#3304E1F8</color>
+    <color name="shadowColor">#332E2E2E</color>
+
+
+
 </resources>

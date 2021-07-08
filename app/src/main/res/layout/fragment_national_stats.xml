@@ -6,7 +6,7 @@
     >
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="match_parent"
         android:fillViewport="true">
         <LinearLayout
             android:layout_width="match_parent"
@@ -15,12 +15,12 @@
             >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/linearLayout"
                 android:elevation="8dp"
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical"
-                android:background="@drawable/btn_round"
+                android:background="#20FAF8F8"
                 >
                 <TextView
                     android:layout_width="match_parent"
@@ -28,7 +28,6 @@
                     android:padding="8dp"
                     android:gravity="center"
                     android:textColor="#f0ece2"
-                    android:background="@drawable/btn_round"
                     android:textSize="20sp"
                     android:text="Total Tests"
                     android:fontFamily="@font/latoregular"
@@ -38,7 +37,6 @@
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:gravity="center"
-                    android:background="@drawable/btn_round"
                     android:text="...."
                     android:textColor="#6a0dad"
                     android:textSize="20sp"
@@ -49,7 +47,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_round"
+                    android:background="#20FAF8F8"
                     android:padding="8dp"
                     android:id="@+id/time_stamp"
                     android:textSize="14sp"
