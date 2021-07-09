@@ -3,18 +3,14 @@ package com.chinh.covidapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import com.chinh.covidapp.R;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.chinh.covidapp.ui.main.NationalStatsFragment;
 import com.chinh.covidapp.ui.main.SelfDiagnosisFragment;
+import com.chinh.covidapp.ui.main.ProtectionFragment;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.github.mikephil.charting.charts.Chart;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -44,7 +40,7 @@ public class HomeActivity extends AppCompatActivity{
 //        });
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.frame, new NewsFragment())
+                .add(R.id.frame, new ProtectionFragment())
                 .commit();
         bottomNavigation.add(new MeowBottomNavigation.Model(ID_TRACK, R.drawable.power));
         bottomNavigation.add(new MeowBottomNavigation.Model(ID_NEWS, R.drawable.newspaper));
@@ -70,21 +66,17 @@ public class HomeActivity extends AppCompatActivity{
                         replace(new SelfDiagnosisFragment());
                         break;
                     case 5 :
-                        replace(new NewsFragment());
-                            break;
-                    default:
-                        replace(new NewsFragment());
+                        replace(new ProtectionFragment());
                         break;
                 }
                 return null;
             }
         });
 
-}
-private void replace(Fragment fragment ){
+    }
+    private void replace(Fragment fragment ){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame, fragment);
         transaction.commit();
     }
 }
-

@@ -31,10 +31,10 @@ public class APIClient {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient client = getUnsafeOkHttpClient()
-                .callTimeout(2, TimeUnit.MINUTES)
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
+//                .callTimeout(2, TimeUnit.MINUTES)
+                .connectTimeout(40, TimeUnit.SECONDS)
+                .readTimeout(40, TimeUnit.SECONDS)
+//                .writeTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(interceptor).build();
 
         if (retrofit==null) {
@@ -54,10 +54,10 @@ public class APIClient {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient client = getUnsafeOkHttpClient()
-                .callTimeout(2, TimeUnit.MINUTES)
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
+//                .callTimeout(2, TimeUnit.MINUTES)
+                .connectTimeout(40, TimeUnit.SECONDS)
+                .readTimeout(40, TimeUnit.SECONDS)
+//                .writeTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(interceptor).build();
 
         if (retrofit2==null) {
