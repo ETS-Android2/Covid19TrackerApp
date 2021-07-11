@@ -78,6 +78,8 @@ public class MapFragment extends Fragment {
             @Override
             public void onPageFinished(WebView view, String url)
             {
+                simpleArcLoader.stop();
+                    simpleArcLoader.setVisibility(View.GONE);
                 webView.setVisibility(View.VISIBLE);
             }
 
@@ -85,7 +87,6 @@ public class MapFragment extends Fragment {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 simpleArcLoader.start();
                 view.loadUrl(url);
-                webView.setVisibility(View.VISIBLE);
                 return true;
             }
 
