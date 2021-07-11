@@ -71,6 +71,7 @@ public class MapFragment extends Fragment {
         webSettings.setBuiltInZoomControls(true);
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
+        simpleArcLoader.start();
         webView.setWebViewClient(new WebViewClient(){
 
 
@@ -78,14 +79,12 @@ public class MapFragment extends Fragment {
             @Override
             public void onPageFinished(WebView view, String url)
             {
-                simpleArcLoader.stop();
-                    simpleArcLoader.setVisibility(View.GONE);
-                webView.setVisibility(View.VISIBLE);
+
+                    webView.setVisibility(View.VISIBLE);
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                simpleArcLoader.start();
                 view.loadUrl(url);
                 return true;
             }
