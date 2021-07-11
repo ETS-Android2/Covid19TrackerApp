@@ -1,9 +1,12 @@
 # Covid19 Tracker App
 
-Worldwide chart  |  country / province data | World News | World Map |  How To Stay Safe | About app
-:---------------:|:------------------------:|:----------:|:---------:|:-----------------:|:--------:
-![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/data_pic.png)  |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/country_pic.png)    |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/news_pic.png)     |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/map_pic.png)     | ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/protection_pic.png)     | ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/about_pic.png)
+Worldwide chart  |  country / province data | World News 
+:------------------------:|:------------------------:|:------------------------:
+![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/data_pic.png)  |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/country_pic.png)    
 
+World Map |  How To Stay Safe | About app
+:------------------------:|:------------------------:|:------------------------:
+![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/news_pic.png)     |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/map_pic.png)     | ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/protection_pic.png)     | ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/about_pic.png)
 ## Debugging
 
 If you run the app on a new computer, first.
