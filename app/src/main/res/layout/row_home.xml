@@ -9,8 +9,7 @@
     android:padding="5dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="5dp"
-    app:contentPadding="5dp"
-    tools:context=".ui.main.PlaceholderFragment">
+    app:contentPadding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"

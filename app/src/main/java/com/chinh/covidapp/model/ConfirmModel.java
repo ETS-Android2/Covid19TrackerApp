@@ -17,7 +17,6 @@ public class ConfirmModel implements Parcelable {
 
     private String source;
 
-
     private String last_updated;
 
     public ConfirmModel() {

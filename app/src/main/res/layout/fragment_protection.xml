@@ -24,7 +24,10 @@
 <!--&lt;!&ndash;            android:src="@drawable/hbg"/>&ndash;&gt;-->
 <!--        -->
 <!--    </RelativeLayout>-->
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
     <LinearLayout
         android:layout_width="440dp"
         android:layout_height="fill_parent"
@@ -32,27 +35,53 @@
         android:background="@color/color_white"
         android:orientation="vertical">
 
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/who" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="40dp">
+            android:gravity="center_horizontal">
+
 
             <ImageView
+                android:id="@+id/expand_bg"
                 android:layout_width="380dp"
                 android:layout_height="100dp"
-                android:background="@drawable/cv2"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:background="@drawable/cv2" />
 
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wearmask_btn"
+                    android:src="@drawable/arrow_bottom"
+                    android:backgroundTint="@color/background_toolbar"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_toRightOf="@+id/wearmask"
+                    android:contentDescription="expand"
+                    app:fabCustomSize="25dp"
+                    app:maxImageSize="15dp"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/arrow_bottom"
+                    />
 
             <ImageView
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:background="@drawable/c1f"
                 android:layout_marginLeft="25dp"
-                android:layout_centerVertical="true"/>
+                android:layout_marginTop="30dp"
+                />
 
             <TextView
+                android:id="@+id/wearmask"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wear a mask"
@@ -63,14 +92,15 @@
                 android:layout_marginTop="30dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="read more."
-                android:textColor="#6003082b"
-                android:textSize="14dp"
-                android:textStyle="bold"
+                android:id="@+id/expand_txt"
+                android:layout_width="242dp"
+                android:layout_height="21dp"
                 android:layout_marginLeft="110dp"
-                android:layout_marginTop="65dp"/>
+                android:layout_marginTop="65dp"
+                android:text="Wear a well-fitting three-layer mask, especially when you can’t physically distance, or if you’re indoors. Clean your hands before putting on and taking off a mask."
+                android:textColor="#6003082b"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -79,7 +109,25 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/keepdistance_btn"
+                android:src="@drawable/arrow_bottom"
+                android:backgroundTint="@color/background_toolbar"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/keepdistance"
+                android:contentDescription="expand"
+                app:fabCustomSize="25dp"
+                app:maxImageSize="15dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/arrow_bottom"
+                />
+
             <ImageView
+                android:id="@+id/expand_keepdistance_bg"
                 android:layout_width="380dp"
                 android:layout_height="100dp"
                 android:background="@drawable/cv1" />
@@ -89,9 +137,10 @@
                 android:layout_height="65dp"
                 android:background="@drawable/c2f"
                 android:layout_marginLeft="25dp"
-                android:layout_centerVertical="true"/>
+                android:layout_marginTop="15dp" />
 
             <TextView
+                android:id="@+id/keepdistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Keep your distance"
@@ -102,11 +151,12 @@
                 android:layout_marginTop="20dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="read more."
+                android:id="@+id/expand_distance_txt"
+                android:layout_width="242dp"
+                android:layout_height="21dp"
+                android:text="Stay at least 1 metre away from others, even if they don’t appear to be sick, since people can have the virus without having symptoms."
                 android:textColor="#6003082b"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="55dp"/>
@@ -117,19 +167,38 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/clean_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_bottom"
+                android:backgroundTint="@color/background_toolbar"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/cleanhands"
+                android:contentDescription="expand"
+                app:fabCustomSize="25dp"
+                app:maxImageSize="15dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/arrow_bottom"
+                />
+
+
             <ImageView
+                android:id="@+id/image_clean_bg"
                 android:layout_width="380dp"
                 android:layout_height="100dp"
-                android:background="@drawable/cv2"/>
+                android:background="@drawable/cv2" />
 
             <ImageView
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                android:layout_marginLeft="25dp"
                 android:background="@drawable/c3f"
-                android:layout_centerVertical="true"/>
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"/>
 
             <TextView
+                android:id="@+id/cleanhands"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Clean your hands"
@@ -141,13 +210,17 @@
             </TextView>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="read more."
+                android:id="@+id/clean_txt"
+                android:layout_width="242dp"
+                android:layout_height="20dp"
+                android:text="Frequently clean your hands with soap and water, or an alcohol-based hand rub. If you can, carry alcohol-based rub with you and use it often."
                 android:textColor="#6003082b"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="50dp"
-                android:textStyle="bold"/>
+                android:textSize="18dp"
+                android:textStyle="bold">
+
+            </TextView>
         </RelativeLayout>
 
         <RelativeLayout
@@ -155,7 +228,24 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/ventilation_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_bottom"
+                android:backgroundTint="@color/background_toolbar"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/ventilation"
+                android:contentDescription="expand"
+                app:fabCustomSize="25dp"
+                app:maxImageSize="15dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/arrow_bottom"
+                />
+
             <ImageView
+                android:id="@+id/image_ventilation_bg"
                 android:layout_width="380dp"
                 android:layout_height="100dp"
                 android:background="@drawable/cv1"/>
@@ -164,10 +254,12 @@
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/c4f"
-                android:layout_centerVertical="true"/>
+              />
 
             <TextView
+                android:id="@+id/ventilation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Improve ventilation"
@@ -179,12 +271,14 @@
             </TextView>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="read more."
+                android:id="@+id/ventilation_txt"
+                android:layout_width="242dp"
+                android:layout_height="20dp"
+                android:text="Ventilation is important: Open windows when indoors to increase the amount of outdoor air."
                 android:textColor="#6003082b"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="50dp"
+                android:textSize="18dp"
                 android:textStyle="bold"/>
         </RelativeLayout>
 
@@ -193,19 +287,37 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/covercough_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_bottom"
+                android:backgroundTint="@color/background_toolbar"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/covercough"
+                android:contentDescription="expand"
+                app:fabCustomSize="25dp"
+                app:maxImageSize="15dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/arrow_bottom"
+                />
+
             <ImageView
+                android:id="@+id/image_cover_bg"
                 android:layout_width="380dp"
                 android:layout_height="100dp"
-                android:background="@drawable/cv2"/>
+                android:background="@drawable/cv2" />
 
             <ImageView
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginLeft="25dp"
-                android:background="@drawable/c5f"
-                android:layout_centerVertical="true"/>
+                android:layout_marginTop="15dp"
+                android:background="@drawable/c5f" />
 
             <TextView
+                android:id="@+id/covercough"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cover your coughs"
@@ -217,10 +329,12 @@
             </TextView>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="read more."
+                android:id="@+id/covercough_txt"
+                android:layout_width="242dp"
+                android:layout_height="20dp"
+                android:text="Cover your coughs and sneezes with a bent elbow or tissue, throwing used tissues into a closed bin right away. Then wash your hands or use an alcohol-based hand rub."
                 android:textColor="#6003082b"
+                android:textSize="18dp"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="50dp"
                 android:textStyle="bold"/>
@@ -231,19 +345,38 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/avoidcrowded_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_bottom"
+                android:backgroundTint="@color/background_toolbar"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/avoidcrowded"
+                android:contentDescription="expand"
+                app:fabCustomSize="25dp"
+                app:maxImageSize="15dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/arrow_bottom"
+                />
+
             <ImageView
+                android:id="@+id/image_avoid_bg"
                 android:layout_width="380dp"
                 android:layout_height="100dp"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/cv1"/>
 
             <ImageView
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginLeft="25dp"
-                android:background="@drawable/c6f"
-                android:layout_centerVertical="true"/>
+                android:layout_marginTop="15dp"
+                android:background="@drawable/c6f" />
 
             <TextView
+                android:id="@+id/avoidcrowded"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Avoid crowded place"
@@ -255,14 +388,16 @@
             </TextView>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="read more."
+                android:id="@+id/avoidcrowded_txt"
+                android:layout_width="242dp"
+                android:layout_height="20dp"
+                android:text="Avoid touching surfaces, especially in public settings or health facilities, in case people infected with COVID-19 have touched them. Clean surfaces regularly with standard disinfectants."
                 android:textColor="#6003082b"
+                android:textSize="18dp"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="50dp"
                 android:textStyle="bold"/>
         </RelativeLayout>
-
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>

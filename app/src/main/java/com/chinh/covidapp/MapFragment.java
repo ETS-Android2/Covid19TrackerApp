@@ -1,15 +1,20 @@
 package com.chinh.covidapp;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.leo.simplearcloader.SimpleArcLoader;
 
@@ -28,6 +33,7 @@ public class MapFragment extends Fragment {
     //"""//https://bnonews.com/index.php/2020/02/the-latest-coronavirus-cases/";
     private final static long threshold = 150000;
     SimpleArcLoader simpleArcLoader;
+
 
     public MapFragment() {
         // Required empty public constructor
@@ -57,6 +63,7 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_map, container, false);
         webView = v.findViewById(R.id.mbEmbeddedWiseWebView);
+//        progressBar = v.findViewById(R.id.determinateBar);
         simpleArcLoader = v.findViewById(R.id.loader);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -65,9 +72,20 @@ public class MapFragment extends Fragment {
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
         webView.setWebViewClient(new WebViewClient(){
+
+
+
+            @Override
+            public void onPageFinished(WebView view, String url)
+            {
+                webView.setVisibility(View.VISIBLE);
+            }
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                simpleArcLoader.start();
                 view.loadUrl(url);
+                webView.setVisibility(View.VISIBLE);
                 return true;
             }
 
@@ -77,24 +95,23 @@ public class MapFragment extends Fragment {
                 openDefaultURL();
                 super.onReceivedError(view, request, error);
             }
+
+
         });
-        simpleArcLoader.start();
         openURL();
         // Inflate the layout for this fragment
-        simpleArcLoader.stop();
-        simpleArcLoader.setVisibility(View.GONE);
         return v;
     }
     private void openURL() {
-        simpleArcLoader.start();
+
         webView.loadUrl(Load_url);
         webView.requestFocus();
-        simpleArcLoader.stop();
-        simpleArcLoader.setVisibility(View.GONE);
+
     }
     private void openDefaultURL()
     {
         webView.loadUrl(default_url);
         webView.requestFocus();
     }
+
 }

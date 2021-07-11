@@ -30,7 +30,7 @@ import com.chinh.covidapp.ui.main.CoronaNewsLoader;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.leo.simplearcloader.SimpleArcLoader;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +59,7 @@ public class NewsFragment extends Fragment
 
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
+    SimpleArcLoader simpleArcLoader;
     public NewsFragment() {
         // Required empty public constructor
     }
@@ -86,7 +87,7 @@ public class NewsFragment extends Fragment
 
         mEmptyStateTextView = (TextView) v.findViewById(R.id.empty_view);
         CoronaNewsListView.setEmptyView(mEmptyStateTextView);
-
+        simpleArcLoader = v.findViewById(R.id.loader);
         // Create a new adapter that takes an empty list of corona news as input
         mAdapter = new CoronaNewsAdapter(getContext(), new ArrayList<CoronaNews>());
 
@@ -133,8 +134,8 @@ public class NewsFragment extends Fragment
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-            View loadingIndicator = v.findViewById(R.id.loading_indicator);
-            loadingIndicator.setVisibility(View.GONE);
+            simpleArcLoader.stop();
+            simpleArcLoader.setVisibility(View.GONE);
 
             // Update empty state with no connection error message
             mEmptyStateTextView.setText(R.string.no_internet_connection);
@@ -153,8 +154,8 @@ public class NewsFragment extends Fragment
     @Override
     public void onLoadFinished(@NonNull Loader<List<CoronaNews>> loader, List<CoronaNews> data) {
         // Hide loading indicator because the data has been loaded
-        View loadingIndicator = getView().findViewById(R.id.loading_indicator);
-        loadingIndicator.setVisibility(View.GONE);
+        simpleArcLoader.stop();
+        simpleArcLoader.setVisibility(View.GONE);
 
         // Set empty state text to display "No Corona News Found found."
         mEmptyStateTextView.setText(R.string.no_corona_news);
