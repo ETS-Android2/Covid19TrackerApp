@@ -1,6 +1,6 @@
 # Covid19 Tracker App
 
-Worldwide chart  |  country / province data |  Map |  How To Stay Safe
+Worldwide chart  |  country / province data | World News | World Map |  How To Stay Safe | About app
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/first.png)  |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/second.png) |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/third.png) |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/fourth.png)
 
