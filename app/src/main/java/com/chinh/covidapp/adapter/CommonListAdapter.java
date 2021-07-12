@@ -16,6 +16,7 @@ import java.util.List;
 
 public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.ViewHolder> {
     private List<ConfirmModel.Location> listdata, listFiltered;
+    private LayoutInflater layoutInflater;
 
     public CommonListAdapter(List<ConfirmModel.Location> listdata) {
         this.listdata = listdata;
@@ -24,7 +25,8 @@ public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.Vi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+
+        layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem = layoutInflater.inflate(R.layout.row_home, parent, false);
         ViewHolder viewHolder = new ViewHolder(listItem);
         return viewHolder;

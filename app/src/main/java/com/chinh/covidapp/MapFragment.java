@@ -28,7 +28,7 @@ public class MapFragment extends Fragment {
 
     private WebView webView;
 //    https://www.trackcorona.live/map
-    private  String Load_url="https://www.trackcorona.live/map";
+    private  String Load_url="https://infographics.channelnewsasia.com/covid-19/map.html";
     private String default_url = "https://www.healthmap.org/covid-19/";
     //"""//https://bnonews.com/index.php/2020/02/the-latest-coronavirus-cases/";
     private final static long threshold = 150000;
@@ -72,6 +72,7 @@ public class MapFragment extends Fragment {
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
         simpleArcLoader.start();
+        webView.loadData(Load_url, "text/html", null);
         webView.setWebViewClient(new WebViewClient(){
 
 
@@ -79,8 +80,7 @@ public class MapFragment extends Fragment {
             @Override
             public void onPageFinished(WebView view, String url)
             {
-
-                    webView.setVisibility(View.VISIBLE);
+                webView.setVisibility(View.VISIBLE);
             }
 
             @Override
