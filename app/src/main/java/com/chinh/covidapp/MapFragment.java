@@ -27,13 +27,12 @@ import com.leo.simplearcloader.SimpleArcLoader;
 public class MapFragment extends Fragment {
 
     private WebView webView;
-//    https://www.trackcorona.live/map
+//    https://infographics.channelnewsasia.com/covid-19/map.html
     private  String Load_url="https://infographics.channelnewsasia.com/covid-19/map.html";
-    private String default_url = "https://www.healthmap.org/covid-19/";
+    private String default_url = "https://www.healthmap.org/covid-19";
     //"""//https://bnonews.com/index.php/2020/02/the-latest-coronavirus-cases/";
     private final static long threshold = 150000;
     SimpleArcLoader simpleArcLoader;
-
 
     public MapFragment() {
         // Required empty public constructor
@@ -55,12 +54,12 @@ public class MapFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         View v = inflater.inflate(R.layout.activity_map, container, false);
         webView = v.findViewById(R.id.mbEmbeddedWiseWebView);
 //        progressBar = v.findViewById(R.id.determinateBar);
@@ -72,11 +71,7 @@ public class MapFragment extends Fragment {
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
         simpleArcLoader.start();
-        webView.loadData(Load_url, "text/html", null);
         webView.setWebViewClient(new WebViewClient(){
-
-
-
             @Override
             public void onPageFinished(WebView view, String url)
             {
@@ -91,27 +86,23 @@ public class MapFragment extends Fragment {
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-
                 openDefaultURL();
                 super.onReceivedError(view, request, error);
             }
-
-
         });
         openURL();
         // Inflate the layout for this fragment
         return v;
     }
-    private void openURL() {
 
+    //Mở 1 trang web qua browser
+    private void openURL() {
         webView.loadUrl(Load_url);
         webView.requestFocus();
-
     }
     private void openDefaultURL()
     {
         webView.loadUrl(default_url);
         webView.requestFocus();
     }
-
 }

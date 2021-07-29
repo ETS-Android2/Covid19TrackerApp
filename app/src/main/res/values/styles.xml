@@ -25,6 +25,12 @@
         <item name="colorPrimaryDark">@android:color/black</item>
         <item name="colorPrimary">#ec625f</item>
 
+    </style><style name="Spinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:backgroundTint">#ffffff</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:defaultValue">@color/color_white</item>
     </style>
-
 </resources>

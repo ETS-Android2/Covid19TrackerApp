@@ -16,7 +16,6 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
 public class HomeActivity extends AppCompatActivity{
-
     private final int ID_TRACK = 1;
     private final int ID_NEWS = 2;
     private final int ID_MAPS = 3;
@@ -47,7 +46,6 @@ public class HomeActivity extends AppCompatActivity{
         bottomNavigation.add(new MeowBottomNavigation.Model(ID_HOME, R.drawable.home));
         bottomNavigation.add(new MeowBottomNavigation.Model(ID_MAPS, R.drawable.maps));
         bottomNavigation.add(new MeowBottomNavigation.Model(ID_ABOUT, R.drawable.information));
-
         bottomNavigation.show(ID_HOME,true);
         bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override

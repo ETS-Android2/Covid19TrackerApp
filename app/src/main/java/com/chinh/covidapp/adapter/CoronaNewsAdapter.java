@@ -35,6 +35,7 @@ public class CoronaNewsAdapter extends ArrayAdapter<CoronaNews>
      * Returns a list item view that displays information about the corona news at the given position
      * in the list of corona News.
      */
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Check if there is an existing list item view (called convertView) that we can reuse,

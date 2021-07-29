@@ -116,7 +116,6 @@ public class ProtectionFragment extends Fragment {
         avoidcrowded_txt = root.findViewById(R.id.avoidcrowded_txt);
         covercough_txt = root.findViewById(R.id.covercough_txt);
 
-
         expand_keepdistance_bg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

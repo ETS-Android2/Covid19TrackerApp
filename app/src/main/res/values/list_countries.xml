@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_countries">
+        <item>vietnam</item>
+        <item>canada</item>
+        <item>uk</item>
+        <item>turkey</item>
+        <item>singapore</item>
+        <item>india</item>
+        <item>algeria</item>
+        <item>china</item>
+        <item>brazil</item>
+        <item>thailand</item>
+        <item>taiwan</item>
+        <item>mexico</item>
+        <item>germany</item>
+        <item>russia</item>
+        <item>philippines</item>
+        <item>japan</item>
+        <item>france</item>
+        <item>italy</item>
+    </string-array>
+</resources>

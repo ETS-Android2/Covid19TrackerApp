@@ -13,11 +13,13 @@ import android.app.Fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.core.content.ContextCompat;
+
 //import androidx.fragment.app.Fragment;
 
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.google.android.material.navigation.NavigationView;
 import com.leo.simplearcloader.ArcConfiguration;
 import com.leo.simplearcloader.SimpleArcLoader;
@@ -50,12 +52,9 @@ import retrofit2.Response;
 public class ChartActivity extends AppCompatActivity {
     private PieChart chart;
     private TextView txtConfirm, txtRecovered, txtDeaths, txtexisting;
-    private Fragment currentFragment;
     private ChartActivity home = this; //create home parameter
     SimpleArcLoader simpleArcLoader;
-    private DrawerLayout drawLayout;
-    private ActionBarDrawerToggle toggle;
-    private NavigationView navigation;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,7 +128,6 @@ public class ChartActivity extends AppCompatActivity {
         txtexisting = findViewById(R.id.txt_existing);
         simpleArcLoader = findViewById(R.id.loader);
 
-
         chart.setUsePercentValues(true);
         chart.getDescription().setEnabled(false);
         chart.setExtraOffsets(5, 10, 5, 5);
@@ -141,7 +139,6 @@ public class ChartActivity extends AppCompatActivity {
 
         chart.setDrawHoleEnabled(true);
         chart.setHoleColor(Color.WHITE);
-
         chart.setTransparentCircleColor(Color.WHITE);
         chart.setTransparentCircleAlpha(110);
 
@@ -152,15 +149,11 @@ public class ChartActivity extends AppCompatActivity {
 
         chart.setRotationAngle(0);
         // enable rotation of the chart by touch
-        chart.setRotationEnabled(true);
         chart.setHighlightPerTapEnabled(true);
-        chart.setCenterTextColor(Color.BLACK);
         chart.setCenterText("COVID-19");
-        chart.setDrawCenterText(true);
+
         // chart.setUnit(" €");
         // chart.setDrawUnitsInChart(true);
-        chart.setEntryLabelColor(Color.WHITE);
-        chart.setEntryLabelTextSize(14f);
         // add a selection listener
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
@@ -195,7 +188,6 @@ public class ChartActivity extends AppCompatActivity {
         loadLatestData();
     }
 
-
     private void setData(int confirm, int death, int recover) {
         ArrayList<PieEntry> entries = new ArrayList<>();
 
@@ -213,16 +205,19 @@ public class ChartActivity extends AppCompatActivity {
         entries.add(new PieEntry(recover, "Recovered"));
 
         PieDataSet dataSet = new PieDataSet(entries, "CoronaVirus");
+
         dataSet.setDrawIcons(false);
         dataSet.setSliceSpace(3f);
         dataSet.setIconsOffset(new MPPointF(0, 40));
         dataSet.setSelectionShift(5f);
-
-        dataSet.setColors(Color.parseColor("#E7673F"), Color.parseColor("#94191D"), Color.parseColor("#286D22"));
+             dataSet.setColors(Color.parseColor("#d45e37"), Color.parseColor("#9e2c2e"), Color.parseColor("#2a9121"));
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter(chart));
         data.setValueTextSize(11f);
         data.setValueTextColor(Color.WHITE);
+        // change description under piechart  color
+        chart.getLegend().setTextColor(Color.WHITE);
+        chart.getDescription().setTextColor(Color.WHITE);
         //data.setValueTypeface(tfLight);
         chart.setData(data);
         // undo all highlights

@@ -7,7 +7,7 @@ import android.os.Parcelable;
 
 import java.util.List;
 
-public class ConfirmModel implements Parcelable {
+    public class ConfirmModel implements Parcelable {
 
 
 

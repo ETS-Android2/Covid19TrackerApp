@@ -25,7 +25,6 @@ public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.Vi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem = layoutInflater.inflate(R.layout.row_home, parent, false);
         ViewHolder viewHolder = new ViewHolder(listItem);
@@ -84,7 +83,6 @@ public class CommonListAdapter extends RecyclerView.Adapter<CommonListAdapter.Vi
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 listFiltered = (ArrayList<ConfirmModel.Location>) filterResults.values;
-
                 // refresh the list with filtered data
                 notifyDataSetChanged();
             }

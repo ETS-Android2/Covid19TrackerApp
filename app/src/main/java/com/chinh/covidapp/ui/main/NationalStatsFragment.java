@@ -9,7 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -28,14 +33,12 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.data.Entry;
 import com.chinh.covidapp.R;
 import com.chinh.covidapp.util.themeUtils;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.google.android.material.textfield.TextInputLayout;
+import com.squareup.picasso.Picasso;
 
 
 import org.json.JSONArray;
@@ -53,14 +56,18 @@ import java.util.ArrayList;
 // * Use the {@link NationalStats#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class NationalStatsFragment extends Fragment  {
+public class NationalStatsFragment extends Fragment implements AdapterView.OnItemClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     //  national link: https://api.covidtracking.com/v1/states/daily.json
-    private static final String URL= "https://api.covid19india.org/data.json";
+        // old link: https://api.covid19india.org/data.json
+    //test link: https://disease.sh/v3/covid-19/all
+    private static final String URL= "https://disease.sh/v3/covid-19/all";
     private ArrayList<String> date;
+    private ArrayList<String> arrayList_season;
+    private ArrayList<String> arrayAdapter_season;
     private Integer value=1000;
     private TextView totalCases,timeStamp;
     private LinearLayout linearLayout;
@@ -72,8 +79,12 @@ public class NationalStatsFragment extends Fragment  {
     private OnFragmentInteractionListener mListener;
 
     private LineChart mChart;
+    private TextView tvCountryName,todayCases,todayDeaths,todayRecovered;
+    private ImageView imageFlag;
+    private Spinner spinnerText;
     private BarChart barChart,barChart2,barChart3;
-
+    private TextInputLayout til_season;
+    private AutoCompleteTextView act_seasons;
     public NationalStatsFragment() {
         // Required empty public constructor
     }
@@ -116,17 +127,31 @@ public class NationalStatsFragment extends Fragment  {
 //        if (getArguments() != null) {
 //            value = getArguments().getInt("Theme",999);
 //        }
+        spinnerText = view.findViewById(R.id.spinnerText);
+        // Creating an Array Adapter to populate the spinner with the data in the string resources
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.list_countries
+                ,R.layout.color_spinner_layout);
+        // Specify the layout to use when the list of choices appears
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinnerText.setAdapter(spinnerAdapter);
+        spinnerText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                extractNew(selectedItem);
+            } // to close the onItemSelected
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                extractNew("Vietnam");
+            }
+        });
         date=new ArrayList<String>();
-
-        totalCases=view.findViewById(R.id.total_tests);
-        timeStamp=view.findViewById(R.id.time_stamp);
-        linearLayout=view.findViewById(R.id.linearLayout);
-
-        mChart = (LineChart) view.findViewById(R.id.line_chart);
-        mChart.setNoDataText("Loading...");
-        mChart.setTouchEnabled(true);
-        mChart.getDescription().setEnabled(false);
-
+        imageFlag = view.findViewById(R.id.imageFlag);
+        todayCases = view.findViewById(R.id.todayCases);
+        todayDeaths = view.findViewById(R.id.todayDeaths);
+        todayRecovered = view.findViewById(R.id.todayRecovered);
         barChart=view.findViewById(R.id.bar_chart);
         barChart.setDrawGridBackground(false);
         barChart.setNoDataText("Loading...");
@@ -138,6 +163,7 @@ public class NationalStatsFragment extends Fragment  {
         barChart.getXAxis().setDrawGridLines(false);
         barChart.getAxisRight().setDrawGridLines(false);
         barChart.setAutoScaleMinMaxEnabled(true);
+        barChart.setDoubleTapToZoomEnabled(false);
         YAxis yAxisa = barChart.getAxisRight();
         yAxisa.setAxisMinimum(0f);
         YAxis yAxisla=barChart.getAxisLeft();
@@ -154,6 +180,9 @@ public class NationalStatsFragment extends Fragment  {
         barChart2.getXAxis().setDrawGridLines(false);
         barChart2.getAxisRight().setDrawGridLines(false);
         barChart2.setAutoScaleMinMaxEnabled(true);
+
+//        barChart2.setTouchEnabled(false);
+        barChart2.setDoubleTapToZoomEnabled(false);
         YAxis yAxis = barChart2.getAxisRight();
         yAxis.setAxisMinimum(0f);
         YAxis yAxisl=barChart2.getAxisLeft();
@@ -170,36 +199,27 @@ public class NationalStatsFragment extends Fragment  {
         barChart3.getXAxis().setDrawGridLines(false);
         barChart3.getAxisRight().setDrawGridLines(false);
         barChart3.setAutoScaleMinMaxEnabled(true);
+        barChart3.setDoubleTapToZoomEnabled(false);
         YAxis yAxisb = barChart3.getAxisRight();
         yAxisb.setAxisMinimum(0f);
         YAxis yAxisbl=barChart3.getAxisLeft();
         yAxisbl.setAxisMinimum(0f);
 
-        extractData();
-        Legend l = mChart.getLegend();
-        l.setForm(Legend.LegendForm.LINE);
+
+        String text = spinnerText.getSelectedItem().toString();
+        extractNew(text);
+
         Legend ll = barChart.getLegend();
         ll.setForm(Legend.LegendForm.LINE);
         Legend lll = barChart2.getLegend();
         lll.setForm(Legend.LegendForm.LINE);
         Legend l3 = barChart3.getLegend();
         l3.setForm(Legend.LegendForm.LINE);
-
-        mChart.getAxisLeft().setEnabled(false);
-        mChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        mChart.getXAxis().setDrawGridLines(false);
-        mChart.getAxisRight().setDrawGridLines(false);
 //        mChart.getAxisRight().setTextColor(Color.WHITE);
 //        mChart.getXAxis().setTextColor(Color.WHITE);
-        YAxis yAxis1 =mChart.getAxisRight();
-        yAxis1.setAxisMinimum(0f);
-        YAxis yAxis2 =mChart.getAxisLeft();
-        yAxis2.setAxisMinimum(0f);
 
-        mChart.setNoDataTextColor(Color.GRAY);
-        mChart.getAxisRight().setTextColor(Color.GRAY);
-        mChart.getXAxis().setTextColor(Color.GRAY);
-        l.setTextColor(Color.GRAY);
+
+
         ll.setTextColor(Color.GRAY);
         lll.setTextColor(Color.GRAY);
         l3.setTextColor(Color.GRAY);
@@ -248,7 +268,7 @@ public class NationalStatsFragment extends Fragment  {
 //            barChart.setNoDataTextColor(Color.WHITE);
 //            barChart.getAxisRight().setTextColor(Color.WHITE);
 //            barChart.getXAxis().setTextColor(Color.WHITE);
-//
+//F
 //            barChart2.setNoDataTextColor(Color.WHITE);
 //            barChart2.getAxisRight().setTextColor(Color.WHITE);
 //            barChart2.getXAxis().setTextColor(Color.WHITE);
@@ -262,170 +282,233 @@ public class NationalStatsFragment extends Fragment  {
 
         return view;
     }
-
-    private void extractData(){
-
-        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+    private void extractNew(String selectedItem){
+        extractCountries(selectedItem);
+    }
+    private void extractCountries(String shortName) {
+        String DefaultURL = "https://disease.sh/v3/covid-19/countries/"+shortName;
+        StringRequest request = new StringRequest(Request.Method.GET, DefaultURL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray =jsonObject.getJSONArray("cases_time_series");
-                    JSONArray testedArray = jsonObject.getJSONArray("tested");
-                    JSONObject tested = testedArray.getJSONObject(testedArray.length()-1);
-                    totalCases.setText(tested.getString("totalsamplestested"));
-                    String xx= "as per " + tested.getString("updatetimestamp").substring(0,10);
-                    timeStamp.setText(xx);
-                    ArrayList<Entry> yVals=new ArrayList<>();
-                    ArrayList<Entry> yVals1=new ArrayList<>();
-                    ArrayList<Entry> yVals2=new ArrayList<>();
-                    ArrayList<BarEntry> byVals=new ArrayList<>();
-                    ArrayList<BarEntry> byVals1=new ArrayList<>();
-                    ArrayList<BarEntry> byVals2=new ArrayList<>();
-                    int j=-1;
-                    for(int i=0;i<jsonArray.length();i++){
-                        j++;
-                        JSONObject currentDate =jsonArray.getJSONObject(i);
-                        String x =currentDate.getString("date");
-                        date.add(x.substring(0,6));
-                        yVals.add(new Entry(j,currentDate.getInt("totalconfirmed")));
-                        yVals1.add(new Entry(j,currentDate.getInt("totalrecovered")));
-                        yVals2.add(new Entry(j,currentDate.getInt("totaldeceased")));
-                        byVals.add(new BarEntry(j,currentDate.getInt("dailyconfirmed")));
-                        byVals1.add(new BarEntry(j,currentDate.getInt("dailyrecovered")));
-                        byVals2.add(new BarEntry(j,currentDate.getInt("dailydeceased")));
-                    }
-                    final ArrayList<String> xVals = date;
 
-                    LineDataSet set1,set2,set3;
-                    BarDataSet dataset = new BarDataSet(byVals,"DailyCases");
-                    dataset.setColor(Color.rgb(255, 51, 51));
-                    BarDataSet dataSet1=new BarDataSet(byVals1,"DailyRecovered");
-                    dataSet1.setColor(Color.rgb(78, 228, 78));
-                    BarDataSet dataSet2=new BarDataSet(byVals2,"DailyDeceased");
-                    dataSet2.setColor(Color.rgb(28,28,240));
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    String countryName = jsonObject.getString("country");
+                    String today_cases = jsonObject.getString("todayCases");
+                    String today_deaths = jsonObject.getString("todayDeaths");
+                    String today_recovered = jsonObject.getString("todayRecovered");
+                    String cases = jsonObject.getString("cases");
+                    JSONObject object = jsonObject.getJSONObject("countryInfo");
+                    String flagUrl = object.getString("flag");
+                    Picasso.get().load(flagUrl).into(imageFlag);
+                    todayCases.setText(today_cases);
+                    todayDeaths.setText(today_deaths);
+                    todayRecovered.setText(today_recovered);
 
-
-                    // create a dataset and give it a type
-                    set1 = new LineDataSet(yVals, "Total Cases");
-                    set2=new LineDataSet(yVals1,"Total Recovered");
-                    set3=new LineDataSet(yVals2,"Total Death");
-                    if(value%2!=0){
-                        set1.setValueTextColor(Color.WHITE);
-                        set2.setValueTextColor(Color.WHITE);
-                        set3.setValueTextColor(Color.WHITE);
-                        dataset.setValueTextColor(Color.WHITE);
-                        dataSet1.setValueTextColor(Color.WHITE);
-                        dataSet2.setValueTextColor(Color.WHITE);
-                    }
-
-                    set1.setColor(Color.RED);
-                    set1.setLineWidth(1f);
-                    set1.setDrawCircles(false);
-                    set1.setValueTextSize(9f);
-
-                    set2.setColor(Color.GREEN);
-                    set2.setLineWidth(1f);
-                    set2.setDrawCircles(false);
-                    set2.setValueTextSize(9f);
-
-                    set3.setColor(Color.BLUE);
-                    set3.setLineWidth(1f);
-                    set3.setDrawCircles(false);
-                    set3.setValueTextSize(9f);
-
-                    ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-                    dataSets.add(set1);
-                    dataSets.add(set2);
-                    dataSets.add(set3);
-
-                    ArrayList<IBarDataSet> barDataSets=new ArrayList<>();
-                    barDataSets.add(dataset);
-
-                    ArrayList<IBarDataSet> barDataSets1=new ArrayList<>();
-                    barDataSets1.add(dataSet1);
-
-                    ArrayList<IBarDataSet> barDataSets2=new ArrayList<>();
-                    barDataSets2.add(dataSet2);
-
-                    // create a data object with the datasets
-                    LineData data = new LineData(dataSets);
-
-
-                    BarData barData = new BarData(barDataSets);
-                    BarData barData1 = new BarData(barDataSets1);
-                    BarData barData2 = new BarData(barDataSets2);
-
-
-                    XAxis xAxis = mChart.getXAxis();
-                    xAxis.setValueFormatter(new ValueFormatter() {
-                        @Override
-                        public String getFormattedValue(float value, AxisBase axis) {
-                            return xVals.get((int) value);
-                        }
-                    });
-
-                    XAxis bxAxis =barChart.getXAxis();
-                    bxAxis.setValueFormatter(new ValueFormatter() {
-                        @Override
-                        public String getFormattedValue(float value, AxisBase axis) {
-                            return xVals.get((int) value);
-                        }
-                    });
-
-                    XAxis bxAxis1 =barChart2.getXAxis();
-                    bxAxis1.setValueFormatter(new ValueFormatter() {
-                        @Override
-                        public String getFormattedValue(float value, AxisBase axis) {
-                            return xVals.get((int) value);
-                        }
-                    });
-
-                    XAxis bxAxis2 =barChart3.getXAxis();
-                    bxAxis2.setValueFormatter(new ValueFormatter() {
-                        @Override
-                        public String getFormattedValue(float value, AxisBase axis) {
-                            return xVals.get((int) value);
-                        }
-                    });
-
-                    mChart.setData(data);
-                    IMarker marker = new MyMarkerView(getContext(),R.layout.custom_marker_view,xVals);
-                    mChart.setMarker(marker);
-
-                    barChart.setData(barData);
-                    IMarker marker1 = new MyMarkerView(getContext(),R.layout.custom_marker_view,xVals);
-                    barChart.setMarker(marker1);
-
-                    barChart2.setData(barData1);
-                    IMarker marker2 = new MyMarkerView(getContext(),R.layout.custom_marker_view,xVals);
-                    barChart2.setMarker(marker2);
-
-                    barChart3.setData(barData2);
-                    IMarker marker3 = new MyMarkerView(getContext(),R.layout.custom_marker_view,xVals);
-                    barChart3.setMarker(marker3);
-                    mChart.invalidate();
-                    barChart.invalidate();
-                    barChart2.invalidate();
-                    barChart3.invalidate();
-
-                } catch (JSONException e) {
+                    extractData(countryName);
+                }catch (JSONException e) {
                     e.printStackTrace();
                 }
 
             }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
-                    }
-                }
+            }
+        }
         );
-
         RequestQueue requestQ = Volley.newRequestQueue(getActivity());
         requestQ.add(request);
+    }
+        private void extractData (String countries){
 
+            String URLconfirm = "https://api.covid19api.com/country/" + countries + "/status/confirmed?from=2021-07-01T00:00:00Z&to=today";
+            String URLdeaths = "https://api.covid19api.com/country/" + countries + "/status/deaths?from=2021-07-01T00:00:00Z&to=today";
+            String URLrecover = "https://api.covid19api.com/country/" + countries + "/status/recovered?from=2021-07-01T00:00:00Z&to=today";
+
+
+            StringRequest request2 = new StringRequest(Request.Method.GET, URLconfirm, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+
+                        JSONArray jsonArray = new JSONArray(response);
+                        ArrayList<BarEntry> byVals = new ArrayList<>();
+
+                        int j = -1;
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            j++;
+                            JSONObject currentDate = jsonArray.getJSONObject(i);
+                            String x = currentDate.getString("Date");
+                            date.add(x.substring(0, 10));
+                            byVals.add(new BarEntry(j, currentDate.getInt("Cases")));
+                        }
+                        final ArrayList<String> xVals = date;
+                        BarDataSet dataset = new BarDataSet(byVals, "DailyCases");
+                        dataset.setColor(Color.rgb(255, 51, 51));
+
+                        if (value % 2 != 0) {
+                            dataset.setValueTextColor(Color.WHITE);
+                        }
+
+
+                        ArrayList<IBarDataSet> barDataSets = new ArrayList<>();
+                        barDataSets.add(dataset);
+
+                        BarData barData = new BarData(barDataSets);
+
+                        XAxis bxAxis = barChart.getXAxis();
+                        bxAxis.setValueFormatter(new ValueFormatter() {
+                            @Override
+                            public String getFormattedValue(float value, AxisBase axis) {
+                                return xVals.get((int) value);
+                            }
+                        });
+
+
+                        barChart.setData(barData);
+                        IMarker marker1 = new MyMarkerView(getContext(), R.layout.custom_marker_view, xVals);
+                        barChart.setMarker(marker1);
+
+
+                        barChart.invalidate();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }
+            );
+
+            StringRequest request3 = new StringRequest(Request.Method.GET, URLdeaths, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+                        ArrayList<BarEntry> byVals1 = new ArrayList<>();
+                        int j = -1;
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            j++;
+                            JSONObject currentDate = jsonArray.getJSONObject(i);
+                            String x = currentDate.getString("Date");
+                            date.add(x.substring(0, 10));
+                            byVals1.add(new BarEntry(j, currentDate.getInt("Cases")));
+                        }
+                        final ArrayList<String> xVals = date;
+
+                        BarDataSet dataSet1 = new BarDataSet(byVals1, "DailyRecovered");
+                        dataSet1.setColor(Color.rgb(78, 228, 78));
+
+                        if (value % 2 != 0) {
+                            dataSet1.setValueTextColor(Color.WHITE);
+                        }
+
+                        ArrayList<IBarDataSet> barDataSets1 = new ArrayList<>();
+                        barDataSets1.add(dataSet1);
+                        BarData barData1 = new BarData(barDataSets1);
+
+
+                        XAxis bxAxis1 = barChart2.getXAxis();
+                        bxAxis1.setValueFormatter(new ValueFormatter() {
+                            @Override
+                            public String getFormattedValue(float value, AxisBase axis) {
+                                return xVals.get((int) value);
+                            }
+                        });
+
+
+                        barChart2.setData(barData1);
+                        IMarker marker2 = new MyMarkerView(getContext(), R.layout.custom_marker_view, xVals);
+                        barChart2.setMarker(marker2);
+
+                        barChart2.invalidate();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }
+            );
+
+            StringRequest request4 = new StringRequest(Request.Method.GET, URLrecover, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+                        ArrayList<BarEntry> byVals2 = new ArrayList<>();
+                        int j = 0;
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            j++;
+                            JSONObject currentDate = jsonArray.getJSONObject(i);
+                            String x = currentDate.getString("Date");
+
+                            date.add(x.substring(0, 10));
+                            byVals2.add(new BarEntry(j, currentDate.getInt("Cases")));
+                        }
+                        final ArrayList<String> xVals = date;
+                        BarDataSet dataSet2 = new BarDataSet(byVals2, "DailyDeceased");
+                        dataSet2.setColor(Color.rgb(28, 28, 240));
+                        if (value % 2 != 0) {
+                            dataSet2.setValueTextColor(Color.WHITE);
+                        }
+                        ArrayList<IBarDataSet> barDataSets2 = new ArrayList<>();
+                        barDataSets2.add(dataSet2);
+                        BarData barData2 = new BarData(barDataSets2);
+
+                        XAxis bxAxis2 = barChart3.getXAxis();
+                        bxAxis2.setValueFormatter(new ValueFormatter() {
+                            @Override
+                            public String getFormattedValue(float value, AxisBase axis) {
+                                return xVals.get((int) value);
+                            }
+                        });
+
+
+                        barChart3.setData(barData2);
+                        IMarker marker3 = new MyMarkerView(getContext(), R.layout.custom_marker_view, xVals);
+                        barChart3.setMarker(marker3);
+
+
+                        barChart3.invalidate();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    }
+            );
+            RequestQueue requestQ = Volley.newRequestQueue(getActivity());
+            requestQ.add(request2);
+            requestQ.add(request3);
+            requestQ.add(request4);
+        }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String text = spinnerText.getSelectedItem().toString();
+        extractNew(text);
     }
 
     public interface OnFragmentInteractionListener {
