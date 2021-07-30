@@ -323,9 +323,9 @@ public class NationalStatsFragment extends Fragment implements AdapterView.OnIte
     }
         private void extractData (String countries){
 
-            String URLconfirm = "https://api.covid19api.com/country/" + countries + "/status/confirmed?from=2021-07-01T00:00:00Z&to=today";
-            String URLdeaths = "https://api.covid19api.com/country/" + countries + "/status/deaths?from=2021-07-01T00:00:00Z&to=today";
-            String URLrecover = "https://api.covid19api.com/country/" + countries + "/status/recovered?from=2021-07-01T00:00:00Z&to=today";
+            String URLconfirm = "https://api.covid19api.com/country/" + countries + "/status/confirmed?from=2021-01-01T00:00:00Z&to=today";
+            String URLdeaths = "https://api.covid19api.com/country/" + countries + "/status/deaths?from=2021-01-01T00:00:00Z&to=today";
+            String URLrecover = "https://api.covid19api.com/country/" + countries + "/status/recovered?from=2021-01-01T00:00:00Z&to=today";
 
 
             StringRequest request2 = new StringRequest(Request.Method.GET, URLconfirm, new Response.Listener<String>() {
@@ -404,8 +404,9 @@ public class NationalStatsFragment extends Fragment implements AdapterView.OnIte
                         }
                         final ArrayList<String> xVals = date;
 
-                        BarDataSet dataSet1 = new BarDataSet(byVals1, "DailyRecovered");
-                        dataSet1.setColor(Color.rgb(78, 228, 78));
+                        BarDataSet dataSet1 = new BarDataSet(byVals1, "DailyDeaths");
+//                        dataSet1.setColor(Color.rgb(78, 228, 78));
+                        dataSet1.setColor(Color.rgb(166, 161, 161));
 
                         if (value % 2 != 0) {
                             dataSet1.setValueTextColor(Color.WHITE);
@@ -461,8 +462,9 @@ public class NationalStatsFragment extends Fragment implements AdapterView.OnIte
                             byVals2.add(new BarEntry(j, currentDate.getInt("Cases")));
                         }
                         final ArrayList<String> xVals = date;
-                        BarDataSet dataSet2 = new BarDataSet(byVals2, "DailyDeceased");
-                        dataSet2.setColor(Color.rgb(28, 28, 240));
+                        BarDataSet dataSet2 = new BarDataSet(byVals2, "DailyRecovered");
+//                        dataSet2.setColor(Color.rgb(28, 28, 240));
+                        dataSet2.setColor(Color.rgb(78, 228, 78));
                         if (value % 2 != 0) {
                             dataSet2.setValueTextColor(Color.WHITE);
                         }

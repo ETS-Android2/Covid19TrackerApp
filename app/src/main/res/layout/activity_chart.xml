@@ -136,7 +136,7 @@
                     android:background="#20FAF8F8"
                     android:text="Confirm"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="#9E2C2E" />
 
                 <TextView
                     android:id="@+id/txt_recover"
@@ -162,7 +162,7 @@
                     android:background="#20FAF8F8"
                     android:text="Deaths"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/red" />
+                    android:textColor="@android:color/darker_gray" />
 
                 <TextView
                     android:id="@+id/txt_existing"
@@ -207,10 +207,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="40dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="20dp"
             android:text="last update : "
             android:background="#20FAF8F8"
+            android:textSize="17sp"
             android:textColor="@android:color/white" />
     </LinearLayout>
             <FrameLayout

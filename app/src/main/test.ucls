@@ -236,7 +236,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="com.chinh.covidapp.ui.main.SectionsPagerAdapter" project="main" 
+  <class id="27" language="java" name="com.chinh.covidapp.adapter.SectionsPagerAdapter" project="main"
     file="/main/java/com/chinh/covidapp/ui/main/SectionsPagerAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3847" y="225"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

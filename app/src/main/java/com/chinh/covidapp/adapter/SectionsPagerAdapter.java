@@ -1,4 +1,4 @@
-package com.chinh.covidapp.ui.main;
+package com.chinh.covidapp.adapter;
 
 import android.content.Context;
 
@@ -9,6 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.chinh.covidapp.R;
+import com.chinh.covidapp.ui.main.ConfirmFragment;
+import com.chinh.covidapp.ui.main.DeathsFragment;
+import com.chinh.covidapp.ui.main.RecoveredFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

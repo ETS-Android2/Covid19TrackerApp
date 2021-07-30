@@ -95,7 +95,6 @@ public class RecoveredFragment extends Fragment {
             progressBar.show();
         try {
             ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
-            ApiInterface apiOtherService = APIClient.getOtherClient().create(ApiInterface.class);
             /**
              GET List Resources
              **/
@@ -103,23 +102,6 @@ public class RecoveredFragment extends Fragment {
             call.enqueue(new Callback<ConfirmModel>() {
                 @Override
                 public void onResponse(Call<ConfirmModel> call, Response<ConfirmModel> response) {
-                    progressBar.dismiss();
-                    setAdapter(response.body());
-                }
-
-                @Override
-                public void onFailure(Call<ConfirmModel> call, Throwable t) {
-                    call.cancel();
-
-                    progressBar.dismiss();
-
-                    Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
-                }
-            });
-            Call<ConfirmModel> otherCall = apiOtherService.getRecovered();
-            otherCall.enqueue(new Callback<ConfirmModel>() {
-                @Override
-                public void onResponse(Call<ConfirmModel> otherCall, Response<ConfirmModel> response) {
                     progressBar.dismiss();
                     setAdapter(response.body());
                 }

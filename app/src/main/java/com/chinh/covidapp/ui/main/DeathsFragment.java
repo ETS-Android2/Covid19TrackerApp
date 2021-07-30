@@ -97,7 +97,6 @@ public class DeathsFragment extends Fragment {
             progressBar.show();
         try {
             ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
-            ApiInterface apiOtherService = APIClient.getOtherClient().create(ApiInterface.class);
             /**
              GET List Resources
              **/
@@ -115,23 +114,6 @@ public class DeathsFragment extends Fragment {
 
                     // recyclerView.setVisibility(View.GONE);
                     // emptyView.setVisibility(View.GONE);
-                    progressBar.dismiss();
-
-                    Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
-                }
-            });
-            Call<ConfirmModel> otherCall = apiOtherService.getDeaths();
-            otherCall.enqueue(new Callback<ConfirmModel>() {
-                @Override
-                public void onResponse(Call<ConfirmModel> otherCall, Response<ConfirmModel> response) {
-                    progressBar.dismiss();
-                    setAdapter(response.body());
-                }
-
-                @Override
-                public void onFailure(Call<ConfirmModel> otherCall, Throwable t) {
-                    otherCall.cancel();
-
                     progressBar.dismiss();
 
                     Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();

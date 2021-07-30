@@ -210,13 +210,15 @@ public class ChartActivity extends AppCompatActivity {
         dataSet.setSliceSpace(3f);
         dataSet.setIconsOffset(new MPPointF(0, 40));
         dataSet.setSelectionShift(5f);
-             dataSet.setColors(Color.parseColor("#d45e37"), Color.parseColor("#9e2c2e"), Color.parseColor("#2a9121"));
+        dataSet.setColors(Color.parseColor("#d45e37"), Color.parseColor("#9e2c2e"), Color.parseColor("#2a9121"));
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter(chart));
         data.setValueTextSize(11f);
         data.setValueTextColor(Color.WHITE);
         // change description under piechart  color
         chart.getLegend().setTextColor(Color.WHITE);
+        chart.getDescription().setTextSize(16f);
+        chart.getLegend().setTextSize(16f);
         chart.getDescription().setTextColor(Color.WHITE);
         //data.setValueTypeface(tfLight);
         chart.setData(data);
@@ -236,13 +238,11 @@ public class ChartActivity extends AppCompatActivity {
 //        progressBar.setMessage("Please wait !");
 //        progressBar.show();
         ApiInterface apiService = APIClient.getClient().create(ApiInterface.class);
-        ApiInterface apiOtherService = APIClient.getOtherClient().create(ApiInterface.class);
 
         /**
          GET List Resources
          **/
         Call<AllModel> call = apiService.getAll();
-        Call<AllModel> otherCall = apiOtherService.getAll();
         call.enqueue(new Callback<AllModel>() {
             @Override
             public void onResponse(Call<AllModel> call, Response<AllModel> response) {
@@ -262,7 +262,8 @@ public class ChartActivity extends AppCompatActivity {
 
                     TextView txtDateUpdate = findViewById(R.id.txtLastUpdate);
                     if (updateDate1 == null) {
-                        txtDateUpdate.setText("Last Update : " + allModel.getConfirmed().getLast_updated());
+                        String x = allModel.getConfirmed().getLast_updated();
+                        txtDateUpdate.setText("Last Update : " + x.substring(0,10));
                         return;
                     }
                     if (updateDate1.after(updateDate2)) {
@@ -287,51 +288,6 @@ public class ChartActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_LONG).show();
             }
         });
-
-            otherCall.enqueue(new Callback<AllModel>() {
-                @Override
-                public void onResponse(Call<AllModel> otherCall, Response<AllModel> response) {
-//                progressBar.dismiss();
-                    simpleArcLoader.stop();
-                    simpleArcLoader.setVisibility(View.GONE);
-                    AllModel allModel = response.body();
-                    if (allModel != null) {
-                        setData(response.body().getLatest().getConfirmed(), response.body().getLatest().getDeaths(), response.body().getLatest().getRecovered());
-
-                        Date updateDate1 = new Date();
-                        Date updateDate2 = new Date();
-                        Date updateDate3 = new Date();
-                        updateDate1 = DateUtil.fromISO8601UTC(allModel.getConfirmed().getLast_updated());
-                        updateDate2 = DateUtil.fromISO8601UTC(allModel.getDeaths().getLast_updated());
-                        updateDate3 = DateUtil.fromISO8601UTC(allModel.getRecovered().getLast_updated());
-
-                        TextView txtDateUpdate = findViewById(R.id.txtLastUpdate);
-                        if (updateDate1 == null) {
-                            txtDateUpdate.setText("Last Update : " + allModel.getConfirmed().getLast_updated());
-                            return;
-                        }
-                        if (updateDate1.after(updateDate2)) {
-                            txtDateUpdate.setText("Last Update : " + updateDate1.toLocaleString());
-                        } else if (updateDate2.after(updateDate3)) {
-                            txtDateUpdate.setText("Last Update : " + updateDate2.toLocaleString());
-                        } else {
-                            txtDateUpdate.setText("Last Update : " + updateDate3.toLocaleString());
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Record Not Found", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<AllModel> otherCall, Throwable t) {
-                    call.cancel();
-
-//                progressBar.dismiss();
-                    simpleArcLoader.stop();
-                    simpleArcLoader.setVisibility(View.GONE);
-                    Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_LONG).show();
-                }
-            });
         }catch (Exception e){
             simpleArcLoader.stop();
             simpleArcLoader.setVisibility(View.GONE);

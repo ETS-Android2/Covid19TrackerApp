@@ -1,6 +1,6 @@
 # Covid19 Tracker App
 
-Worldwide chart  |  country / province data | World News 
+Worldwide Visualize  |  country / province data | World News 
 :------------------------:|:------------------------:|:------------------------:
 ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/data_pic.png)  |  ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/country_pic.png)    | ![image](https://github.com/chinhdoan/Covid19TrackerApp/blob/main/screens/news_pic.png)     
 

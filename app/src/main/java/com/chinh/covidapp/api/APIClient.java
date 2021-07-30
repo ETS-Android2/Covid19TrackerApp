@@ -20,10 +20,8 @@ public class APIClient {
 
 //    Open localhost on local device instead of using 127.0.0.1:8000, i changed to 10.0.2.2:8000
     public static final String BASE_URL = "http://10.0.2.2:8000";
-    public static final String FAR_URL = "https://covid-tracker-us.herokuapp.com";
 
     private static Retrofit retrofit = null;
-    private static Retrofit retrofit2 = null;
 
     public static Retrofit getClient() {
 
@@ -48,28 +46,6 @@ public class APIClient {
         return retrofit;
     }
 
-    public static Retrofit getOtherClient() {
-
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        OkHttpClient client = getUnsafeOkHttpClient()
-//                .callTimeout(2, TimeUnit.MINUTES)
-                .connectTimeout(40, TimeUnit.SECONDS)
-                .readTimeout(40, TimeUnit.SECONDS)
-//                .writeTimeout(30, TimeUnit.SECONDS)
-                .addInterceptor(interceptor).build();
-
-        if (retrofit2==null) {
-            retrofit2 = new Retrofit.Builder()
-                    .baseUrl(FAR_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addConverterFactory(ScalarsConverterFactory.create())
-                    .client(client)
-                    .build();
-        }
-        return retrofit2;
-    }
 
 
     public static OkHttpClient.Builder getUnsafeOkHttpClient() {
