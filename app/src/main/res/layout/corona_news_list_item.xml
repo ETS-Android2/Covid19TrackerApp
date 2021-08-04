@@ -6,7 +6,7 @@
     android:id="@+id/corona_news_list_item"
     android:layout_width="match_parent"
     android:layout_height="50pt"
-    android:background="#F0FAF8F8"
+    android:background="@color/color_white"
     android:orientation="horizontal"
     android:paddingStart="5dp"
     android:paddingLeft="5dp"
@@ -25,7 +25,7 @@
         <TextView
             android:id="@+id/source"
             android:layout_width="wrap_content"
-            android:layout_height="10pt"
+            android:layout_height="wrap_content"
             android:ellipsize="end"
             android:fontFamily="sans-serif-medium"
             android:maxLines="1"
@@ -36,12 +36,12 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="35pt"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
             android:ellipsize="end"
             android:maxLines="6"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="#280E57"
+            android:textColor="@color/background"
             android:textSize="16sp"
             android:visibility="visible"
             tools:text="Long placeholder location that should wrap to more than 2 lines of text" />
@@ -61,7 +61,7 @@
             android:layout_width="35pt"
             android:layout_height="10pt"
             android:layout_gravity="end"
-            android:textColor="#280E57"
+            android:textColor="@color/background"
             android:textSize="14sp"
             tools:text="Mar 6, 2020" />
 
@@ -70,7 +70,7 @@
             android:layout_width="34pt"
             android:layout_height="10pt"
             android:layout_gravity="end"
-            android:textColor="#280E57"
+            android:textColor="@color/background"
             android:textSize="14sp"
             tools:text="3:00 PM" />
 

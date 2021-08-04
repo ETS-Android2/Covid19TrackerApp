@@ -30,8 +30,8 @@ public class APIClient {
 
         OkHttpClient client = getUnsafeOkHttpClient()
 //                .callTimeout(2, TimeUnit.MINUTES)
-                .connectTimeout(40, TimeUnit.SECONDS)
-                .readTimeout(40, TimeUnit.SECONDS)
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
 //                .writeTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(interceptor).build();
 

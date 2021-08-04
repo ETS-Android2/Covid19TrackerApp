@@ -15,13 +15,14 @@
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EDEBEB"
+            android:background="@color/color_white"
             android:divider="@android:drawable/divider_horizontal_bright"
-            android:dividerHeight="15dp"
+            android:dividerHeight="20dp"
+            android:textColor="@color/color_white"
             android:hapticFeedbackEnabled="true"
             android:headerDividersEnabled="true"
             android:orientation="vertical"
-            android:paddingTop="15dp">
+            >
 
         </ListView>
 

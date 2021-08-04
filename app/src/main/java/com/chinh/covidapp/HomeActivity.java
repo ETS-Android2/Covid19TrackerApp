@@ -3,8 +3,11 @@ package com.chinh.covidapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -21,6 +24,7 @@ public class HomeActivity extends AppCompatActivity{
     private final int ID_MAPS = 3;
     private final int ID_ABOUT = 4;
     private final int ID_HOME = 5;
+    private Switch switch_btn;
     private MeowBottomNavigation bottomNavigation;
     private HomeActivity home = this; //create home parameter
     @Override
@@ -30,6 +34,9 @@ public class HomeActivity extends AppCompatActivity{
 //        getSupportActionBar().setDisplayShowHomeEnabled(true);
 //        TextView selected_page = findViewById(R.id.selected_page);
         bottomNavigation = findViewById(R.id.bottomNavigation);
+
+
+
 //        findViewById(R.id.homeBtn).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -70,6 +77,9 @@ public class HomeActivity extends AppCompatActivity{
                 return null;
             }
         });
+
+
+
 
     }
     private void replace(Fragment fragment ){

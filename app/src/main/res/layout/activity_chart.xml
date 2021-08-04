@@ -101,7 +101,9 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/color_white"
             android:backgroundTint="@drawable/hover"/>
+
     </LinearLayout>
+
 
 
 
@@ -123,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="#20FAF8F8"
                 android:weightSum="4">
 
                 <TextView
@@ -133,7 +136,6 @@
                     android:gravity="center"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:background="#20FAF8F8"
                     android:text="Confirm"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#9E2C2E" />
@@ -146,7 +148,6 @@
                     android:gravity="center"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:background="#20FAF8F8"
                     android:text="Recovered"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/green" />
@@ -159,7 +160,6 @@
                     android:gravity="center"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:background="#20FAF8F8"
                     android:text="Deaths"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@android:color/darker_gray" />
@@ -171,7 +171,6 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:paddingTop="5dp"
-                    android:background="#20FAF8F8"
                     android:paddingBottom="5dp"
                     android:text="Existing"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -197,11 +196,6 @@
         </com.github.mikephil.charting.charts.PieChart>
     </androidx.cardview.widget.CardView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:orientation="vertical">
         <TextView
             android:id="@+id/txtLastUpdate"
             android:layout_width="match_parent"
@@ -213,7 +207,6 @@
             android:background="#20FAF8F8"
             android:textSize="17sp"
             android:textColor="@android:color/white" />
-    </LinearLayout>
             <FrameLayout
                 android:id="@+id/fragmentHolder"
                 android:layout_width="match_parent"

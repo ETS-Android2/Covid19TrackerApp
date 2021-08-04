@@ -29,7 +29,7 @@ public class MapFragment extends Fragment {
     private WebView webView;
 //    https://infographics.channelnewsasia.com/covid-19/map.html
     private  String Load_url="https://infographics.channelnewsasia.com/covid-19/map.html";
-    private String default_url = "https://www.healthmap.org/covid-19";
+    private  String default_url="https://infographics.channelnewsasia.com/covid-19/map.html";
     //"""//https://bnonews.com/index.php/2020/02/the-latest-coronavirus-cases/";
     private final static long threshold = 150000;
     SimpleArcLoader simpleArcLoader;
@@ -80,7 +80,7 @@ public class MapFragment extends Fragment {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
+//                view.loadUrl(url);
                 return true;
             }
 
@@ -92,7 +92,7 @@ public class MapFragment extends Fragment {
         });
         openURL();
         // Inflate the layout for this fragment
-        return v;
+      return v;
     }
 
     //Mở 1 trang web qua browser

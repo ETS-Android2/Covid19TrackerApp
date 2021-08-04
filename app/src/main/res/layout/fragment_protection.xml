@@ -40,7 +40,7 @@
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/who" />
 
         <RelativeLayout
@@ -51,8 +51,9 @@
 
             <ImageView
                 android:id="@+id/expand_bg"
-                android:layout_width="380dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:paddingLeft="50dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/cv2" />
 
@@ -93,13 +94,13 @@
 
             <TextView
                 android:id="@+id/expand_txt"
-                android:layout_width="242dp"
+                android:layout_width="300dp"
                 android:layout_height="21dp"
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="65dp"
                 android:text="Wear a well-fitting three-layer mask, especially when you can’t physically distance, or if you’re indoors. Clean your hands before putting on and taking off a mask."
                 android:textColor="#6003082b"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -128,7 +129,7 @@
 
             <ImageView
                 android:id="@+id/expand_keepdistance_bg"
-                android:layout_width="380dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@drawable/cv1" />
 
@@ -152,11 +153,11 @@
 
             <TextView
                 android:id="@+id/expand_distance_txt"
-                android:layout_width="242dp"
+                android:layout_width="320dp"
                 android:layout_height="21dp"
                 android:text="Stay at least 1 metre away from others, even if they don’t appear to be sick, since people can have the virus without having symptoms."
                 android:textColor="#6003082b"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="55dp"/>
@@ -186,7 +187,7 @@
 
             <ImageView
                 android:id="@+id/image_clean_bg"
-                android:layout_width="380dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@drawable/cv2" />
 
@@ -211,13 +212,13 @@
 
             <TextView
                 android:id="@+id/clean_txt"
-                android:layout_width="242dp"
+                android:layout_width="310dp"
                 android:layout_height="20dp"
                 android:text="Frequently clean your hands with soap and water, or an alcohol-based hand rub. If you can, carry alcohol-based rub with you and use it often."
                 android:textColor="#6003082b"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="50dp"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold">
 
             </TextView>
@@ -246,7 +247,7 @@
 
             <ImageView
                 android:id="@+id/image_ventilation_bg"
-                android:layout_width="380dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@drawable/cv1"/>
 
@@ -272,13 +273,13 @@
 
             <TextView
                 android:id="@+id/ventilation_txt"
-                android:layout_width="242dp"
+                android:layout_width="325dp"
                 android:layout_height="20dp"
                 android:text="Ventilation is important: Open windows when indoors to increase the amount of outdoor air."
                 android:textColor="#6003082b"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="50dp"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
         </RelativeLayout>
 
@@ -305,7 +306,7 @@
 
             <ImageView
                 android:id="@+id/image_cover_bg"
-                android:layout_width="380dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@drawable/cv2" />
 
@@ -330,11 +331,11 @@
 
             <TextView
                 android:id="@+id/covercough_txt"
-                android:layout_width="242dp"
+                android:layout_width="300dp"
                 android:layout_height="20dp"
                 android:text="Cover your coughs and sneezes with a bent elbow or tissue, throwing used tissues into a closed bin right away. Then wash your hands or use an alcohol-based hand rub."
                 android:textColor="#6003082b"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="50dp"
                 android:textStyle="bold"/>
@@ -363,7 +364,7 @@
 
             <ImageView
                 android:id="@+id/image_avoid_bg"
-                android:layout_width="380dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/cv1"/>
@@ -389,11 +390,11 @@
 
             <TextView
                 android:id="@+id/avoidcrowded_txt"
-                android:layout_width="242dp"
+                android:layout_width="300dp"
                 android:layout_height="20dp"
                 android:text="Avoid touching surfaces, especially in public settings or health facilities, in case people infected with COVID-19 have touched them. Clean surfaces regularly with standard disinfectants."
                 android:textColor="#6003082b"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="50dp"
                 android:textStyle="bold"/>
